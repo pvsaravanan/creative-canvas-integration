@@ -39,20 +39,19 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Hero section tokens */
+    --hero: 0 0% 0.8%;
+    --hero-foreground: 0 0% 100%;
+    --hero-muted: 0 0% 100% / 0.4;
+    --hero-border: 0 0% 100% / 0.15;
   }
 
   .dark {
@@ -91,6 +90,53 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Hero section tokens (dark) */
+    --hero: 0 0% 0.8%;
+    --hero-foreground: 0 0% 100%;
+    --hero-muted: 0 0% 100% / 0.4;
+    --hero-border: 0 0% 100% / 0.15;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+    box-shadow: 
+      0 4px 24px -1px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1.5px hsl(0 0% 100%);
+    color: transparent;
+  }
+
+  .bento-mask {
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  @keyframes loading-slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-loading {
+    animation: loading-slide 2s ease-in-out infinite;
   }
 }
 
